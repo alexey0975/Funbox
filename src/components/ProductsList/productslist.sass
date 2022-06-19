@@ -1,0 +1,17 @@
+.list
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  width: 100%
+
+.item:not(:last-child)
+  margin-right: auto
+
+@media(max-width: 1024px)
+  .list
+    justify-content: space-evenly
+  .item
+    margin-bottom: 25px
+    &:not(:last-child)
+      margin-right: 0
+
