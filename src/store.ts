@@ -1,5 +1,5 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { IProduct } from "./App";
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { IProduct } from './App';
 
 interface ICartState {
   id: number,
@@ -21,7 +21,7 @@ const cartSlice = createSlice({
   reducers: {
     addProducts(state, action) {
       state.push({
-        id: action.payload
+        id: action.payload,
       });
     },
     removeProducts(state, action) {
@@ -35,11 +35,11 @@ export const store = configureStore({
     products: productsSlice.reducer,
     cart: cartSlice.reducer,
   },
-});
+})
 
 export const { getProducts } = productsSlice.actions;
 export const { addProducts, removeProducts } = cartSlice.actions;
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 
 
 

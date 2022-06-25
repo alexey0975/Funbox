@@ -1,5 +1,6 @@
 import React from 'react';
 import { IProduct } from '../../App';
+import { BaseTitle } from '../BaseTitle';
 import styles from './productcard.sass';
 
 interface IProductCardProps extends IProduct {
@@ -60,7 +61,7 @@ export function ProductCard(props: IProductCardProps) {
             {props.hover && props.selected && 'Котэ не одобряет?' || 'Сказочное заморское яство'}
           </p>
 
-          <h2 className={styles.title}>
+          <BaseTitle className={styles.title}>
             <a
               className={classes.link}
               href="#"
@@ -71,7 +72,7 @@ export function ProductCard(props: IProductCardProps) {
               <span className={styles.brand}>{props.brand}</span>
               <span className={styles.name}>{props.name}</span>
             </a>
-          </h2>
+          </BaseTitle>
 
           <div className={styles.about}>
             <p className={styles.value}>

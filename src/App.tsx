@@ -1,9 +1,9 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { getProducts, store } from "./store";
-import { ProductsList } from "./components/ProductsList";
-import { BaseSection } from "./components/BaseSection";
-import { Layout } from "./components/Layout";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { getProducts, store } from './store';
+import { ProductsList } from './components/ProductsList';
+import { BaseSection } from './components/BaseSection';
+import { Layout } from './components/Layout';
 import './main.global.sass';
 import data from '../data/data.json';
 
@@ -19,13 +19,11 @@ export interface IProduct {
 
 store.dispatch(getProducts(data));
 
-export const cardContext = React.createContext<IProduct[]>([]);
-
 export function App() {
   return (
     <main>
       <Layout>
-        <BaseSection title="Ты сегодня покормил кота?">
+        <BaseSection titleEl="h1" titleContent="Ты сегодня покормил кота?">
           <Provider store={store} >
             <ProductsList />
           </Provider>
