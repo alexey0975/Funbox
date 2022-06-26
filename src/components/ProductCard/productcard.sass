@@ -69,21 +69,17 @@
   margin: 0
   margin-bottom: 13px
 
-.link
-  display: flex
-  flex-direction: column
-  color: #000
-  &::before
-    content: ''
+.btn_hidden
     position: absolute
     left: 0
     top: 0
     right: 0
     bottom: 0
     z-index: 100
-  &_disabled
-    color: #B3B3B3
-    cursor: default
+    &:focus
+      outline-offset: 5px
+    &:disabled
+      cursor: default
 
 .brand
   font-weight: 700
@@ -114,7 +110,7 @@
   &_disabled
     color: #FFFF66
 
-.sublink
+.pseudolink
   color: #1698D9
   border-bottom: 1px dashed #1698D9
   transition: border-color .3s linear, color .3s linear

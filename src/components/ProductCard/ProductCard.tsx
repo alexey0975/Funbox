@@ -7,7 +7,7 @@ interface IProductCardProps extends IProduct {
   hover: boolean,
   setHover: (value: boolean) => void,
   selected: boolean,
-  setSelected: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void,
+  setSelected: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
   disabled: boolean,
 }
 
@@ -42,36 +42,33 @@ export function ProductCard(props: IProductCardProps) {
       props.disabled && styles.picture_disabled || ''
     ].join(' '),
 
-    sublink: [
-      styles.sublink,
-      props.hover && styles.sublink_hover || ''
-    ].join(' '),
-
-    link: [
-      styles.link,
-      props.disabled && styles.link_disabled || ''
+    buyBtn: [
+      styles.pseudolink,
+      props.hover && styles.pseudolink_hover || ''
     ].join(' '),
   };
 
   return (
     <article className={styles.wrapper}>
       <div className={classes.inner}>
+        <button
+          className={styles.btn_hidden}
+          onMouseOver={() => { props.setHover(true) }}
+          onMouseOut={() => { props.setHover(false) }}
+          onFocus={() => { props.setHover(true) }}
+          onBlur={() => { props.setHover(false) }}
+          onClick={(event) => { props.setSelected(event) }}
+          disabled={props.disabled}
+        />
         <div className={styles.content}>
           <p className={classes.slogan}>
             {props.hover && props.selected && 'Котэ не одобряет?' || 'Сказочное заморское яство'}
           </p>
 
           <BaseTitle className={styles.title}>
-            <a
-              className={classes.link}
-              href="#"
-              onMouseOver={() => { props.setHover(true) }}
-              onMouseOut={() => { props.setHover(false) }}
-              onClick={(event) => { props.setSelected(event) }}
-            >
-              <span className={styles.brand}>{props.brand}</span>
-              <span className={styles.name}>{props.name}</span>
-            </a>
+            <span className={styles.brand}>{props.brand}</span>
+            <br />
+            <span className={styles.name}>{props.name}</span>
           </BaseTitle>
 
           <div className={styles.about}>
@@ -102,12 +99,12 @@ export function ProductCard(props: IProductCardProps) {
           props.selected && props.description ||
           <span>
             Чего сидишь? Порадуй котэ,
-            <a
-              className={classes.sublink}
+            <button
+              className={classes.buyBtn}
               onClick={(event) => { props.setSelected(event) }}
             >
               купи
-            </a>.
+            </button>.
           </span>
         }
       </p>

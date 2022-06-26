@@ -8,7 +8,7 @@ export function ProductCardContainer(props: IProduct) {
   const [hover, setHover] = useState(false);
   const disabled = !props.in_stock;
 
-  function cardClicked(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function cardClicked(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
     if (disabled) return;
